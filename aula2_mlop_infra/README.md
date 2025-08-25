@@ -260,45 +260,20 @@ docker volume prune
 
 ## 📁 Extended Project Structure
 ```
+```
 aula2_mlop_infra/
-├── notebooks/
-│   ├── bonsai_classifier_mlflow.ipynb     # Main bonsai classification workshop
-│   ├── infrastructure_exploration.ipynb   # Docker & networking deep dive
-│   └── advanced_mlflow_features.ipynb     # Model registry & lifecycle management
-├── data/
-│   ├── bonsai_dataset.csv                 # Primary bonsai species dataset
-│   ├── bonsai_images/                     # Sample bonsai photos (future extension)
-│   └── plant_care_recommendations.json    # Species-specific care data
-├── src/
-│   ├── train_bonsai_model.py              # Automated bonsai model training
-│   ├── model_validation.py                # Model performance validation
-│   ├── data_preprocessing.py              # Bonsai data preparation pipeline
-│   └── infrastructure_health_check.py     # Container monitoring utilities
-├── docker/
-│   ├── Dockerfile.api                     # API service container
-│   ├── Dockerfile.mlflow                  # Custom MLflow container
-│   ├── requirements.txt                   # Python dependencies
-│   ├── docker-compose.yml                 # Complete infrastructure definition
-│   ├── docker-compose.override.yml        # Development overrides
-│   └── .env.template                      # Environment configuration template
 ├── api/
-│   ├── app.py                             # Bonsai species prediction API
-│   ├── model_loader.py                    # MLflow model loading utilities
-│   ├── validation.py                      # Input validation and error handling
-│   └── health_checks.py                   # API health and readiness endpoints
-├── config/
-│   ├── mlflow.conf                        # MLflow server configuration
-│   ├── jupyter_config.py                  # JupyterLab customization
-│   └── logging.conf                       # Centralized logging configuration
-├── scripts/
-│   ├── setup_environment.sh               # Automated environment setup
-│   ├── backup_data.sh                     # Data backup procedures
-│   └── performance_monitoring.sh          # Infrastructure monitoring
-├── tests/
-│   ├── test_bonsai_classifier.py          # Model testing suite
-│   ├── test_api_endpoints.py              # API integration tests
-│   └── test_infrastructure.py             # Container health tests
-└── README.md                              # This comprehensive guide
+│   └── app.py                  # Bonsai species prediction API
+├── docker/
+│   ├── Dockerfile              # Container for API/MLflow
+│   ├── docker-compose.yml      # Infrastructure definition
+│   ├── requirements.txt        # Python dependencies
+│   └── init-mlflow.sh         # MLflow initialization script
+├── notebooks/
+│   └── bonsai_classifier.ipynb # Bonsai classification notebook
+├── src/
+│   └── train_model.py          # Model training script
+└── README.md                   # This guide
 ```
 
 ## 🌳 Advanced Bonsai Species Classification Details
