@@ -1,9 +1,11 @@
 services:
   mlflow:
-    image: ghcr.io/mlflow/mlflow
+    image: ghcr.io/mlflow/mlflow:v3.3.1
     container_name: mlflow_server
+    links:
+      - jupyter
     ports:
-        - "5000:5000"
+        - "5001:5000"
     volumes:
         - ../db:/mlflow/db            # Database location
         - ../artifacts:/artifacts     # Separate location for artifacts
@@ -16,7 +18,7 @@ services:
     command: ["bash", "/init-mlflow.sh"]
 
   jupyter:
-    image: jupyter/scipy-notebook:latest
+    image: jupyter/minimal-notebook:latest
     container_name: jupyter_lab
     ports:
       - "8888:8888"
@@ -27,8 +29,6 @@ services:
       - JUPYTER_ENABLE_LAB=yes
       - MLFLOW_TRACKING_URI=http://mlflow:5000
     command: start-notebook.sh --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_root=True
-    depends_on:
-      - mlflow
 
   api:
     build:
