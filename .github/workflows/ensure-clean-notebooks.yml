@@ -3,11 +3,11 @@ name: Ensure Clean Jupyter Notebooks
 on:
   push:
     paths:
-      - 'notebooks/**/*.ipynb'
+      - '**/notebooks/**/*.ipynb'
       - '.github/workflows/ensure-clean-notebooks.yml'
   pull_request:
     paths:
-      - 'notebooks/**/*.ipynb'
+      - '**/notebooks/**/*.ipynb'
       - '.github/workflows/ensure-clean-notebooks.yml'
 
 jobs:
