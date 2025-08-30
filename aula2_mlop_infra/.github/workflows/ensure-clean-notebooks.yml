@@ -1,0 +1,22 @@
+name: Ensure Clean Jupyter Notebooks
+
+on:
+  push:
+    paths:
+      - 'notebooks/**/*.ipynb'
+      - '.github/workflows/ensure-clean-notebooks.yml'
+  pull_request:
+    paths:
+      - 'notebooks/**/*.ipynb'
+      - '.github/workflows/ensure-clean-notebooks.yml'
+
+jobs:
+  ensure-clean-notebooks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Ensure clean Jupyter notebooks
+        uses: ResearchSoftwareActions/EnsureCleanNotebooksAction@1.1
+        with:
+          disable-checks: outputs,execution_count
