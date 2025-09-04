@@ -1,48 +1,56 @@
-
-
 # Class II: Infrastructure as Code for MLOps
 
 ## Goal
+
 Learn Infrastructure as Code (IaC) principles by deploying a complete MLOps stack using Docker containers. Build a **bonsai species classifier** for a plant website while understanding how to codify, version, and manage ML infrastructure with experiment tracking, model registry, and model serving APIs.
 
 ## 🌱 Project Context: Bonsai Species Classifier
+
 We'll build a machine learning model to classify different bonsai species for an e-commerce plant website. The model will help customers identify bonsai types from photos and provide care recommendations.
 
 ## Class Structure
 
 ### Prerequisites
+
 Students only need:
+
 - **Docker** and **Docker Compose** installed
 - A web browser
 - No Python, MLflow, or other tools needed locally!
 
 ### Quick Start
+
 1. Clone the repository
 2. Navigate to `aulas/aula2_mlop_infra/docker`
 3. Run: `docker compose up -d`
 
 4. Open your browser to:
    - **JupyterLab**: http://localhost:8888 (main workspace - train bonsai classifier)
-   - **MLflow UI**: http://localhost:5000 (experiment tracking - compare bonsai models)
+   - **MLflow UI**: http://localhost:5001 (experiment tracking - compare bonsai models)
    - **API**: http://localhost:8080 (model serving - bonsai species prediction)
 
 ### 1. Infrastructure as Code Foundations (45 min)
+
 #### Theory & Concepts (20 min)
+
 - **IaC Principles**: Why codify infrastructure? Version control, reproducibility, scalability
 - **Docker Fundamentals**: Containers vs. VMs, images, networking, volumes
 - **Container Orchestration**: Docker Compose for multi-service applications
 - **MLOps Infrastructure Patterns**: Common architectures and best practices
 
 #### Live Demo & Setup (25 min)
+
 - **Environment Setup**: Deploy the entire MLOps stack with `docker compose up -d`
 - **Service Discovery**: Explore running containers, networks, and volumes
 - **Health Checks**: Verify all services are operational
 - **Troubleshooting**: Common startup issues and debugging techniques
 
 ### 2. Hands-on Bonsai Classification & Infrastructure Deep Dive (90 min)
+
 Students work through the notebook (`bonsai_classifier_mlflow.ipynb`) while mastering containerized infrastructure:
 
 #### Infrastructure Components & Experiment Tracking (45 min)
+
 - **Docker Compose Analysis**: Dissect the YAML configuration line by line
 - **Service Networking**: How containers communicate (DNS, ports, networks)
 - **Volume Management**: Data persistence strategies for ML workflows
@@ -51,6 +59,7 @@ Students work through the notebook (`bonsai_classifier_mlflow.ipynb`) while mast
 - **Hands-on Practice**: Train multiple bonsai classifiers with different hyperparameters
 
 #### Model Registry & Advanced Infrastructure (45 min)
+
 - **Model Registry Deep Dive**: Centralized model storage and versioning
 - **Model Lifecycle Management**: Staging → Production promotion workflows
 - **Container Resource Management**: CPU, memory, and storage considerations
@@ -59,13 +68,16 @@ Students work through the notebook (`bonsai_classifier_mlflow.ipynb`) while mast
 - **Real-world Scenarios**: Production deployment considerations
 
 ### 3. API Development & Production Readiness (75 min)
+
 #### API Integration & Testing (35 min)
+
 - **Container-to-Container Communication**: JupyterLab → MLflow → API integration
 - **API Development**: Build and test the bonsai species prediction endpoint
 - **End-to-end Testing**: Realistic bonsai measurements and species predictions
 - **Error Handling**: Robust API responses and fallback mechanisms
 
 #### Infrastructure Operations & Production Readiness (40 min)
+
 - **Infrastructure Validation**: Complete stack verification and health checks
 - **Configuration Management**: Environment variables, secrets, and configuration files
 - **Backup & Recovery**: Data persistence and disaster recovery strategies
@@ -79,6 +91,7 @@ Students work through the notebook (`bonsai_classifier_mlflow.ipynb`) while mast
 ### Infrastructure Debugging
 
 **Container Orchestration Issues:**
+
 ```bash
 # Complete infrastructure health check
 docker compose ps
@@ -93,6 +106,7 @@ docker compose exec jupyter curl http://mlflow:5000/health
 ```
 
 **Windows CMD equivalents:**
+
 ```cmd
 REM Complete infrastructure health check
 docker compose ps
@@ -107,6 +121,7 @@ docker compose exec jupyter curl http://mlflow:5000/health
 ```
 
 **MLflow UI not loading?**
+
 ```bash
 # Comprehensive MLflow debugging
 docker compose logs mlflow
@@ -118,6 +133,7 @@ netstat -ano | findstr :5000
 ```
 
 **Windows CMD equivalents:**
+
 ```cmd
 REM Comprehensive MLflow debugging
 docker compose logs mlflow
@@ -129,6 +145,7 @@ netstat -ano | findstr :5000
 ```
 
 **JupyterLab connection issues?**
+
 ```bash
 # Access token and configuration
 docker compose logs jupyter | grep token
@@ -139,6 +156,7 @@ docker compose exec jupyter cat /opt/conda/etc/jupyter/jupyter_lab_config.py
 ```
 
 **Windows CMD equivalents:**
+
 ```cmd
 REM Access token and configuration
 docker compose logs jupyter | findstr token
@@ -149,6 +167,7 @@ docker compose exec jupyter type /opt/conda/etc/jupyter/jupyter_lab_config.py
 ```
 
 **Model Registry errors in notebook?**
+
 - Verify MLflow backend store configuration in docker-compose.yml
 - Check if Model Registry is enabled (depends on MLflow setup)
 - Test Model Registry API manually: `curl http://localhost:5000/api/2.0/mlflow/registered-models/list`
@@ -156,6 +175,7 @@ docker compose exec jupyter type /opt/conda/etc/jupyter/jupyter_lab_config.py
 - Review MLflow artifact store permissions and paths
 
 **API connection failed?**
+
 ```bash
 # Comprehensive API debugging
 docker compose logs api
@@ -170,6 +190,7 @@ docker compose exec api python -c "import mlflow; print(mlflow.__version__)"
 ```
 
 **Windows CMD equivalents:**
+
 ```cmd
 REM Comprehensive API debugging
 docker compose logs api
@@ -185,6 +206,7 @@ docker compose exec api python -c "import mlflow; print(mlflow.__version__)"
 ```
 
 ### Advanced Container Management
+
 ```bash
 # Service scaling and management
 docker compose up -d --scale jupyter=2
@@ -206,6 +228,7 @@ docker network inspect aula2_mlop_infra_default
 ```
 
 **Windows CMD equivalents:**
+
 ```cmd
 REM Service scaling and management
 docker compose up -d --scale jupyter=2
@@ -227,6 +250,7 @@ docker network inspect aula2_mlop_infra_default
 ```
 
 ### Performance Optimization
+
 ```bash
 # Resource allocation tuning (add to docker-compose.yml)
 # services:
@@ -243,6 +267,7 @@ docker volume prune
 ```
 
 **Windows CMD equivalents:**
+
 ```cmd
 REM Resource allocation tuning (add to docker-compose.yml)
 REM services:
@@ -259,21 +284,25 @@ docker volume prune
 ```
 
 ## 📁 Extended Project Structure
+
 ```
+
 ```
+
 aula2_mlop_infra/
 ├── api/
-│   └── app.py                  # Bonsai species prediction API
+│ └── app.py # Bonsai species prediction API
 ├── docker/
-│   ├── Dockerfile              # Container for API/MLflow
-│   ├── docker-compose.yml      # Infrastructure definition
-│   ├── requirements.txt        # Python dependencies
-│   └── init-mlflow.sh         # MLflow initialization script
+│ ├── Dockerfile # Container for API/MLflow
+│ ├── docker-compose.yml # Infrastructure definition
+│ ├── requirements.txt # Python dependencies
+│ └── init-mlflow.sh # MLflow initialization script
 ├── notebooks/
-│   └── bonsai_classifier.ipynb # Bonsai classification notebook
+│ └── bonsai_classifier.ipynb # Bonsai classification notebook
 ├── src/
-│   └── train_model.py          # Model training script
-└── README.md                   # This guide
+│ └── train_model.py # Model training script
+└── README.md # This guide
+
 ```
 
 ## 🌳 Advanced Bonsai Species Classification Details
@@ -289,34 +318,34 @@ aula2_mlop_infra/
 - **Bark Texture Score**: Surface roughness and pattern complexity (0-10)
 
 ### Extended Target Classes & Care Requirements
-- **Juniper Bonsai** (0): 
+- **Juniper Bonsai** (0):
   - **Characteristics**: Hardy evergreen, needle-like foliage, drought resistant
   - **Care**: Full sun, minimal watering, wire training in fall
   - **Business Value**: Low-maintenance option for beginners
 
-- **Ficus Bonsai** (1): 
+- **Ficus Bonsai** (1):
   - **Characteristics**: Broad leaves, aerial roots, rapid growth
   - **Care**: Bright indirect light, consistent moisture, frequent pruning
   - **Business Value**: Indoor-friendly, dramatic visual appeal
 
-- **Pine Bonsai** (2): 
+- **Pine Bonsai** (2):
   - **Characteristics**: Long needles, distinctive candles, slow growth
   - **Care**: Full sun, well-draining soil, candle pinching in spring
   - **Business Value**: Traditional aesthetic, collector's choice
 
-- **Maple Bonsai** (3): 
+- **Maple Bonsai** (3):
   - **Characteristics**: Lobed leaves, seasonal color changes, delicate branching
   - **Care**: Partial shade, consistent moisture, protection from wind
   - **Business Value**: Spectacular autumn display, premium pricing
 
 ### Enhanced Business Value Propositions
-- **Customer Experience**: 
+- **Customer Experience**:
   - Instant species identification with 95%+ accuracy
   - Personalized care recommendations based on customer location/climate
   - Seasonal care calendar generation
   - Compatibility assessment with customer's existing collection
 
-- **Inventory Management**: 
+- **Inventory Management**:
   - Automated plant categorization and pricing optimization
   - Seasonal demand forecasting based on species characteristics
   - Quality control verification against supplier descriptions
@@ -327,3 +356,4 @@ aula2_mlop_infra/
   - Reduced customer service inquiries via self-service tools
   - Dynamic pricing based on rarity and care complexity
   - Supply chain optimization through demand prediction
+```
